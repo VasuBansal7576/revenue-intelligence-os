@@ -37,6 +37,7 @@
 }
 
 .global-nav-links a {
+  flex: 0 0 auto;
   min-height: 32px;
   border: 1px solid var(--border-subtle);
   border-radius: 999px;
@@ -180,6 +181,8 @@
   }
 
   .global-nav-links {
+    width: 100%;
+    max-width: 100%;
     justify-content: flex-start;
   }
 

@@ -2,7 +2,7 @@
 
 ## 1. Atmosphere & Identity
 
-A dense revenue command desk, built for managers who need evidence before opinion. The signature is the evidence spine: every panel is organized around timestamped Memory and Knowledge records, with production state always visible.
+A dense revenue command desk, built for managers who need evidence before opinion. The signature is an answer-first evidence spine: the first viewport explains what changed, why it matters, and what to do next, while timestamped Memory and Knowledge records remain one step away.
 
 ## 2. Color
 
@@ -74,7 +74,7 @@ All spacing derives from a base of 4px.
 ### Grid
 
 - Max content width: none; this is a full-width console.
-- Desktop: fixed timeline rail, flexible briefing column, fixed graph rail.
+- Desktop: answer strip, two-column primary workbench, then progressive proof trail.
 - Tablet/mobile: panels stack in source order.
 - Breakpoints: sm 640px, md 768px, lg 1024px, xl 1280px.
 
@@ -87,7 +87,7 @@ All spacing derives from a base of 4px.
 
 ### App Frame
 
-- **Structure**: header, mode badge, tenant metadata, three-panel main grid.
+- **Structure**: header, mode badge, tenant metadata, answer strip, two-panel main grid, proof disclosures.
 - **Spacing**: `--space-4`, `--space-5`, `--space-6`.
 - **States**: production status always visible.
 - **Accessibility**: semantic header and main landmarks.
@@ -96,7 +96,7 @@ All spacing derives from a base of 4px.
 ### Panel
 
 - **Structure**: section with panel header and scrollable body.
-- **Variants**: timeline, briefing, graph.
+- **Variants**: timeline, briefing.
 - **Spacing**: `--space-4`.
 - **States**: focus outline on links and buttons.
 - **Accessibility**: labelled by visible heading.
@@ -127,6 +127,15 @@ All spacing derives from a base of 4px.
 - **Spacing**: `--space-3`.
 - **States**: hover tonal shift.
 - **Accessibility**: causal edges rendered as text rows below the visual grouping.
+- **Motion**: none.
+
+### Proof Disclosure
+
+- **Structure**: native details/summary with short metadata, title, and one-line summary.
+- **Variants**: graph, call timeline, evidence inspector.
+- **Spacing**: `--space-4`.
+- **States**: closed by default for secondary proof; graph may open by default when it explains the active answer.
+- **Accessibility**: native disclosure semantics and keyboard operation.
 - **Motion**: none.
 
 ## 6. Motion & Interaction

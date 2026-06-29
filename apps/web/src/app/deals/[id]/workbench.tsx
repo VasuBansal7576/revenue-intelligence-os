@@ -29,6 +29,31 @@ function Panel({ title, eyebrow, children }: { readonly title: string; readonly 
   );
 }
 
+function ProofDisclosure({
+  title,
+  eyebrow,
+  summary,
+  children,
+  defaultOpen = false
+}: {
+  readonly title: string;
+  readonly eyebrow: string;
+  readonly summary: string;
+  readonly children: ReactNode;
+  readonly defaultOpen?: boolean;
+}) {
+  return (
+    <details className="proof-disclosure" open={defaultOpen}>
+      <summary>
+        <span>{eyebrow}</span>
+        <strong>{title}</strong>
+        <em>{summary}</em>
+      </summary>
+      <div className="proof-disclosure-body">{children}</div>
+    </details>
+  );
+}
+
 function DealList({ contexts, selectedDealId }: { readonly contexts: readonly DealContext[]; readonly selectedDealId: string }) {
   return (
     <nav className="deal-list" aria-label="Deals">
@@ -126,6 +151,10 @@ export function DealWorkbench({
   readonly selectedContext: DealContext;
   readonly timeline: DealTimelineResponse;
 }) {
+  const primaryDiagnosis = briefing.causal_diagnosis[0];
+  const primaryRisk = briefing.risk_flags[0];
+  const primaryAction = briefing.next_best_actions[0];
+
   return (
     <main className="app-shell">
       <header className="topbar">
@@ -134,17 +163,37 @@ export function DealWorkbench({
           <h1>Operator Console</h1>
         </div>
         <div className="topbar-meta">
-          <Badge tone="production">PRODUCTION</Badge>
+          <Badge tone="production">LOCAL PROOF</Badge>
           <span>{selectedContext.tenant.name}</span>
           <code>{selectedContext.tenant.id}</code>
         </div>
       </header>
 
+      <section className="deal-answer" aria-labelledby="deal-answer-title">
+        <div>
+          <p>Why this deal changed</p>
+          <h2 id="deal-answer-title">{briefing.status_summary}</h2>
+        </div>
+        <div className="answer-grid">
+          <div>
+            <span>Cause</span>
+            <strong>{primaryDiagnosis?.description ?? "No cited diagnosis available."}</strong>
+          </div>
+          <div>
+            <span>Risk</span>
+            <strong>{primaryRisk ? `${primaryRisk.flag} / ${primaryRisk.severity}` : "No active risk flag."}</strong>
+          </div>
+          <div>
+            <span>Next move</span>
+            <strong>{primaryAction?.action ?? "No cited next action available."}</strong>
+          </div>
+        </div>
+      </section>
+
       <div className="console-grid">
         <Panel eyebrow="timeline" title="Deal Replay">
           <DealList contexts={contexts} selectedDealId={selectedContext.deal.id} />
           <MemoryReplay dealId={selectedContext.deal.id} timeline={timeline} />
-          <CallTimeline calls={selectedContext.call_events} />
         </Panel>
 
         <Panel eyebrow="briefing" title="Cited Briefing">
@@ -156,15 +205,21 @@ export function DealWorkbench({
           </div>
           <BriefingPanel briefing={briefing} context={selectedContext} />
         </Panel>
-
-        <Panel eyebrow="graph" title="Causal Graph">
-          <GraphPanel context={selectedContext} />
-        </Panel>
-
-        <Panel eyebrow="evidence" title="Evidence Inspector">
-          <EvidencePanel context={selectedContext} timeline={timeline} />
-        </Panel>
       </div>
+
+      <section className="proof-stack" aria-label="Proof trail">
+        <ProofDisclosure eyebrow="graph" title="Causal Graph" summary="Buyer state, call event, and causal edge." defaultOpen>
+          <GraphPanel context={selectedContext} />
+        </ProofDisclosure>
+
+        <ProofDisclosure eyebrow="timeline" title="Call Timeline" summary={`${selectedContext.call_events.length} timestamped call events.`}>
+          <CallTimeline calls={selectedContext.call_events} />
+        </ProofDisclosure>
+
+        <ProofDisclosure eyebrow="evidence" title="Evidence Inspector" summary="Memory, contact, call, causal, and CRM source records.">
+          <EvidencePanel context={selectedContext} timeline={timeline} />
+        </ProofDisclosure>
+      </section>
     </main>
   );
 }

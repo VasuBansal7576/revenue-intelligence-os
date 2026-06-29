@@ -115,15 +115,68 @@ a:hover {
   color: var(--text-secondary);
 }
 
+.deal-answer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.9fr);
+  gap: var(--space-6);
+  align-items: end;
+  margin-bottom: var(--space-4);
+  border: 1px solid var(--border-default);
+  border-radius: 8px;
+  padding: var(--space-5);
+  background: var(--surface-secondary);
+}
+
+.deal-answer p,
+.answer-grid span,
+.proof-disclosure summary span {
+  margin: 0 0 var(--space-1);
+  color: var(--text-tertiary);
+  font-size: 12px;
+  font-weight: 550;
+  line-height: 1.35;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.deal-answer h2 {
+  max-width: 62ch;
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.25;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+.answer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.answer-grid div {
+  min-width: 0;
+  border-left: 1px solid var(--border-subtle);
+  padding-left: var(--space-3);
+}
+
+.answer-grid strong {
+  display: block;
+  color: var(--text-primary);
+  font-size: 14px;
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+
 .console-grid {
   display: grid;
-  grid-template-columns: minmax(250px, 280px) minmax(340px, 1fr) minmax(260px, 330px) minmax(280px, 340px);
+  grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
   gap: var(--space-4);
-  align-items: stretch;
+  align-items: start;
 }
 
 .panel {
-  min-height: calc(100dvh - 104px);
+  min-height: auto;
   overflow: hidden;
   border: 1px solid var(--border-default);
   border-radius: 8px;
@@ -145,7 +198,7 @@ a:hover {
 }
 
 .panel-body {
-  max-height: calc(100dvh - 176px);
+  max-height: none;
   overflow: auto;
   padding: var(--space-4);
 }
@@ -393,6 +446,62 @@ a:hover {
   border-color: var(--accent-secondary);
 }
 
+.proof-stack {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.proof-disclosure {
+  border: 1px solid var(--border-default);
+  border-radius: 8px;
+  background: var(--surface-secondary);
+}
+
+.proof-disclosure summary {
+  display: grid;
+  grid-template-columns: 110px minmax(180px, 0.45fr) minmax(0, 1fr);
+  gap: var(--space-4);
+  align-items: center;
+  min-height: 64px;
+  padding: var(--space-4);
+  cursor: pointer;
+  list-style: none;
+}
+
+.proof-disclosure summary::-webkit-details-marker {
+  display: none;
+}
+
+.proof-disclosure summary::after {
+  content: "+";
+  justify-self: end;
+  color: var(--accent-primary);
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.proof-disclosure[open] summary::after {
+  content: "-";
+}
+
+.proof-disclosure summary strong {
+  color: var(--text-primary);
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.proof-disclosure summary em {
+  color: var(--text-secondary);
+  font-style: normal;
+}
+
+.proof-disclosure-body {
+  border-top: 1px solid var(--border-subtle);
+  padding: var(--space-4);
+}
+
 .deal-row,
 .timeline-item,
 .memory-replay li,
@@ -422,16 +531,17 @@ a:hover {
 }
 
 @media (max-width: 1180px) {
+  .deal-answer,
   .console-grid {
     grid-template-columns: 1fr;
   }
 
-  .panel {
-    min-height: auto;
+  .answer-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .panel-body {
-    max-height: none;
+  .proof-disclosure summary {
+    grid-template-columns: 90px minmax(160px, 0.45fr) minmax(0, 1fr);
   }
 }
 
@@ -446,11 +556,33 @@ a:hover {
   }
 
   .score-grid,
-  .graph-node-grid {
+  .graph-node-grid,
+  .answer-grid {
     grid-template-columns: 1fr;
+  }
+
+  .deal-answer {
+    gap: var(--space-4);
+    padding: var(--space-4);
+  }
+
+  .answer-grid div {
+    border-top: 1px solid var(--border-subtle);
+    border-left: 0;
+    padding-top: var(--space-3);
+    padding-left: 0;
   }
 
   .briefing-head {
     flex-direction: column;
+  }
+
+  .proof-disclosure summary {
+    grid-template-columns: 1fr auto;
+    gap: var(--space-2);
+  }
+
+  .proof-disclosure summary em {
+    grid-column: 1 / -1;
   }
 }
