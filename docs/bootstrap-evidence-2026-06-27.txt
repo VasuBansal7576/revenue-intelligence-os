@@ -1,0 +1,144 @@
+Scenario: Bootstrap Revenue Intelligence OS from /Users/vasu/Desktop/Gong/causal-deal-intelligence into /Users/vasu/Desktop/Gong+Hermes/revenue-intelligence-os
+Invocation: rsync -a --delete --delete-excluded --exclude=node_modules/ --exclude=.next/ --exclude=.turbo/ --exclude=.pytest_cache/ --exclude=.ruff_cache/ --exclude=.cdi/ --exclude=.omo/ --exclude=.git/ --exclude=__pycache__/ --exclude=*.pyc --exclude=*.tsbuildinfo SRC/ DST/ && cp attachment docs/ULTRAGOAL.md
+Binary observable: target exists, ULTRAGOAL hash matches attachment, excluded/generated cache paths are absent, find shows product layout and created files.
+Artifact: /Users/vasu/Desktop/Gong+Hermes/revenue-intelligence-os/docs/bootstrap-evidence-2026-06-27.txt
+
+== top-level product layout: find maxdepth 2 ==
+DESIGN.md
+README.md
+apps
+apps/api
+apps/web
+docker-compose.yml
+docs
+docs/ULTRAGOAL.md
+docs/bootstrap-evidence-2026-06-27.txt
+docs/context.md
+docs/hydradb-integration.md
+docs/production-runbook.md
+fixtures
+fixtures/battlecards.ts
+fixtures/calls.ts
+fixtures/contacts.ts
+fixtures/deals.ts
+fixtures/index.ts
+fixtures/package.json
+fixtures/playbooks.ts
+fixtures/tenants.ts
+fixtures/tsconfig.json
+package-lock.json
+package.json
+packages
+packages/hydradb-client
+packages/types
+scripts
+tsconfig.base.json
+turbo.json
+
+== changed/created files report: find type f ==
+DESIGN.md
+README.md
+apps/api/app/auth/__init__.py
+apps/api/app/auth/tenant_boundary.py
+apps/api/app/config.py
+apps/api/app/crm/__init__.py
+apps/api/app/crm/router.py
+apps/api/app/deals/__init__.py
+apps/api/app/deals/router.py
+apps/api/app/external.py
+apps/api/app/ingestion/__init__.py
+apps/api/app/ingestion/causal_linker.py
+apps/api/app/ingestion/jobs.py
+apps/api/app/ingestion/models.py
+apps/api/app/ingestion/router.py
+apps/api/app/ingestion/service.py
+apps/api/app/intelligence/__init__.py
+apps/api/app/intelligence/briefing_builder.py
+apps/api/app/intelligence/models.py
+apps/api/app/intelligence/router.py
+apps/api/app/knowledge/__init__.py
+apps/api/app/knowledge/router.py
+apps/api/app/main.py
+apps/api/app/pipeline/__init__.py
+apps/api/app/pipeline/router.py
+apps/api/app/records.py
+apps/api/app/temporal/__init__.py
+apps/api/app/temporal/models.py
+apps/api/app/temporal/router.py
+apps/api/app/temporal/timeline.py
+apps/api/package.json
+apps/api/pyproject.toml
+apps/api/requirements.txt
+apps/api/tests/test_crm_pipeline.py
+apps/api/tests/test_external.py
+apps/api/tests/test_ingestion.py
+apps/api/tests/test_ingestion_audio.py
+apps/api/tests/test_ingestion_models.py
+apps/api/tests/test_intelligence.py
+apps/api/tests/test_knowledge.py
+apps/api/tests/test_pipeline.py
+apps/api/tests/test_temporal.py
+apps/api/tests/test_tenant_boundary.py
+apps/web/next-env.d.ts
+apps/web/next.config.ts
+apps/web/package.json
+apps/web/src/app/deals/[id]/api-contracts.ts
+apps/web/src/app/deals/[id]/briefing-panel.tsx
+apps/web/src/app/deals/[id]/briefing-panel.type-test.tsx
+apps/web/src/app/deals/[id]/data.ts
+apps/web/src/app/deals/[id]/evidence-panel.tsx
+apps/web/src/app/deals/[id]/format.ts
+apps/web/src/app/deals/[id]/graph-panel.tsx
+apps/web/src/app/deals/[id]/page.tsx
+apps/web/src/app/deals/[id]/ui.tsx
+apps/web/src/app/deals/[id]/workbench.tsx
+apps/web/src/app/globals.css
+apps/web/src/app/layout.tsx
+apps/web/src/app/page.tsx
+apps/web/tsconfig.json
+docker-compose.yml
+docs/ULTRAGOAL.md
+docs/bootstrap-evidence-2026-06-27.txt
+docs/context.md
+docs/hydradb-integration.md
+docs/production-runbook.md
+fixtures/battlecards.ts
+fixtures/calls.ts
+fixtures/contacts.ts
+fixtures/deals.ts
+fixtures/index.ts
+fixtures/package.json
+fixtures/playbooks.ts
+fixtures/tenants.ts
+fixtures/tsconfig.json
+package-lock.json
+package.json
+packages/hydradb-client/package.json
+packages/hydradb-client/src/fixture-memory-store.ts
+packages/hydradb-client/src/fixture-store-queries.ts
+packages/hydradb-client/src/fixture-store-state.ts
+packages/hydradb-client/src/hydradb-memory-store.ts
+packages/hydradb-client/src/index.ts
+packages/hydradb-client/src/knowledge-store.ts
+packages/hydradb-client/src/memory-store.ts
+packages/hydradb-client/src/schema.ts
+packages/hydradb-client/tests/memory-store-contract.test.ts
+packages/hydradb-client/tests/temporal-query.test.ts
+packages/hydradb-client/tests/tenant-boundary.test.ts
+packages/hydradb-client/tsconfig.json
+packages/types/package.json
+packages/types/src/index.ts
+packages/types/tsconfig.json
+tsconfig.base.json
+turbo.json
+
+== excluded/generated path check ==
+PASS: excluded/generated cache paths absent
+
+== ULTRAGOAL hash check ==
+08275eda133ed7be2c0ec1dfedfd683941f9d55f5d739e788a163bc737ecaf51  /Users/vasu/.codex/attachments/5b465b1e-7faa-4654-853a-f6c7ce5d8792/pasted-text.txt
+08275eda133ed7be2c0ec1dfedfd683941f9d55f5d739e788a163bc737ecaf51  /Users/vasu/Desktop/Gong+Hermes/revenue-intelligence-os/docs/ULTRAGOAL.md
+PASS: docs/ULTRAGOAL.md byte-identical to attachment
+
+== file count ==
+95

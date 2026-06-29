@@ -1,0 +1,21 @@
+{
+  "name": "causal-deal-intelligence",
+  "private": true,
+  "packageManager": "npm@11.11.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "fixtures"
+  ],
+  "scripts": {
+    "dev": "npm --workspace @causal-deal/web run dev",
+    "build": "turbo run build",
+    "typecheck": "turbo run typecheck",
+    "test": "npm --workspace @causal-deal/hydradb-client run test && PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=apps/api python -m pytest apps/api/tests",
+    "check": "npm run test && npm run typecheck && npm run build"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.6",
+    "typescript": "^5.8.3"
+  }
+}

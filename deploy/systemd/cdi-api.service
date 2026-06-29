@@ -1,0 +1,21 @@
+[Unit]
+Description=Revenue Intelligence OS API
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=cdi
+Group=cdi
+WorkingDirectory=/opt/revenue-intelligence-os
+EnvironmentFile=/etc/cdi/revenue-intelligence-os.env
+ExecStart=/opt/revenue-intelligence-os/scripts/production-start-api.sh
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ReadWritePaths=/var/lib/cdi
+
+[Install]
+WantedBy=multi-user.target

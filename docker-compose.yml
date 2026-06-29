@@ -1,0 +1,25 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: causal_deal_intelligence
+      POSTGRES_USER: causal
+      POSTGRES_PASSWORD: causal
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  hydradb:
+    image: alpine:3.20
+    command: ["sh", "-c", "echo 'HydraDB fixture adapter active for U1'; sleep infinity"]
+    ports:
+      - "7331:7331"
+
+volumes:
+  postgres-data:

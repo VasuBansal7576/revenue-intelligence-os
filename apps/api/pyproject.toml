@@ -1,0 +1,15 @@
+[project]
+name = "causal-deal-api"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi==0.115.6",
+  "python-multipart==0.0.20",
+  "uvicorn[standard]==0.34.0"
+]
+
+[tool.uvicorn]
+factory = false
+
+[tool.pytest.ini_options]
+asyncio_default_fixture_loop_scope = "function"
