@@ -190,10 +190,12 @@ export function DealWorkbench({
         </div>
       </section>
 
-      <div className="console-grid">
+      <div className="workbench-stack">
         <Panel eyebrow="timeline" title="Deal Replay">
-          <DealList contexts={contexts} selectedDealId={selectedContext.deal.id} />
-          <MemoryReplay dealId={selectedContext.deal.id} timeline={timeline} />
+          <div className="deal-replay-grid">
+            <DealList contexts={contexts} selectedDealId={selectedContext.deal.id} />
+            <MemoryReplay dealId={selectedContext.deal.id} timeline={timeline} />
+          </div>
         </Panel>
 
         <Panel eyebrow="briefing" title="Cited Briefing">

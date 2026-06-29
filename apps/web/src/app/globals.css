@@ -168,9 +168,14 @@ a:hover {
   text-wrap: pretty;
 }
 
-.console-grid {
+.workbench-stack {
   display: grid;
-  grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+  gap: var(--space-4);
+}
+
+.deal-replay-grid {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.34fr) minmax(0, 1fr);
   gap: var(--space-4);
   align-items: start;
 }
@@ -206,7 +211,6 @@ a:hover {
 .deal-list {
   display: grid;
   gap: var(--space-2);
-  margin-bottom: var(--space-4);
 }
 
 .deal-row,
@@ -321,7 +325,7 @@ a:hover {
 }
 
 .memory-replay {
-  margin-bottom: var(--space-4);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .memory-replay strong {
@@ -532,7 +536,7 @@ a:hover {
 
 @media (max-width: 1180px) {
   .deal-answer,
-  .console-grid {
+  .deal-replay-grid {
     grid-template-columns: 1fr;
   }
 
@@ -557,6 +561,7 @@ a:hover {
 
   .score-grid,
   .graph-node-grid,
+  .memory-replay,
   .answer-grid {
     grid-template-columns: 1fr;
   }

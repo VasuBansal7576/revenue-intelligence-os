@@ -74,7 +74,7 @@ All spacing derives from a base of 4px.
 ### Grid
 
 - Max content width: none; this is a full-width console.
-- Desktop: answer strip, two-column primary workbench, then progressive proof trail.
+- Desktop: answer strip, compact replay band, full-width cited briefing, then progressive proof trail.
 - Tablet/mobile: panels stack in source order.
 - Breakpoints: sm 640px, md 768px, lg 1024px, xl 1280px.
 
@@ -87,7 +87,7 @@ All spacing derives from a base of 4px.
 
 ### App Frame
 
-- **Structure**: header, mode badge, tenant metadata, answer strip, two-panel main grid, proof disclosures.
+- **Structure**: header, mode badge, tenant metadata, answer strip, compact replay band, cited briefing, proof disclosures.
 - **Spacing**: `--space-4`, `--space-5`, `--space-6`.
 - **States**: production status always visible.
 - **Accessibility**: semantic header and main landmarks.
